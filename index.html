@@ -9,19 +9,55 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
 		<style>
-			snap-logo {
-	width: 120px;
-	max-width: 100%;
-	height: auto;
-	filter: drop-shadow(0 0 10px rgba(0, 123, 255, 0.4));
-}
+			:root {
+				--snap-blue: #1f6ed4;
+				--snap-blue-dark: #1657aa;
+				--snap-glass: rgba(255, 255, 255, 0.05);
+				--snap-border: rgba(255, 255, 255, 0.12);
+				--snap-text-soft: rgba(255, 255, 255, 0.78);
+			}
 
+			/* LOGO */
+			#header .logo {
+				width: 9rem;
+				height: 9rem;
+				border: 0 !important;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: transparent !important;
+				box-shadow: none !important;
+				margin: 0 auto 1.25rem auto;
+				overflow: visible;
+			}
+
+			#header .logo:before,
+			#header .logo:after {
+				display: none !important;
+			}
+
+			.snap-logo {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+				display: block;
+				border-radius: 50%;
+				filter: drop-shadow(0 10px 24px rgba(31, 110, 212, 0.22));
+			}
+
+			/* HERO */
 			.brand-subtitle {
 				font-size: 0.95rem;
 				letter-spacing: 0.22rem;
 				text-transform: uppercase;
-				opacity: 0.78;
+				opacity: 0.82;
 				margin-top: 0.35rem;
+				margin-bottom: 0.8rem;
+			}
+
+			.hero-copy {
+				max-width: 47rem;
+				margin: 0 auto;
 			}
 
 			.hero-buttons {
@@ -33,37 +69,47 @@
 			}
 
 			.button.primary {
-				background: #1f6ed4 !important;
-				border-color: #1f6ed4 !important;
+				background: var(--snap-blue) !important;
+				border-color: var(--snap-blue) !important;
 				box-shadow: 0 10px 30px rgba(31, 110, 212, 0.25);
 			}
 
 			.button.primary:hover {
-				background: #1657aa !important;
-				border-color: #1657aa !important;
+				background: var(--snap-blue-dark) !important;
+				border-color: var(--snap-blue-dark) !important;
 			}
 
 			.quick-points {
 				display: grid;
 				grid-template-columns: repeat(3, 1fr);
 				gap: 1rem;
-				margin-top: 1.5rem;
+				margin-top: 1.75rem;
 			}
 
 			.quick-point {
-				border: 1px solid rgba(255,255,255,0.12);
-				border-radius: 12px;
+				border: 1px solid var(--snap-border);
+				border-radius: 14px;
 				padding: 1rem;
 				text-align: center;
-				background: rgba(255,255,255,0.03);
+				background: var(--snap-glass);
+				backdrop-filter: blur(8px);
+				-webkit-backdrop-filter: blur(8px);
+			}
+
+			/* CONTENT CARDS */
+			.quote-box,
+			.service-card,
+			.contact-box {
+				border: 1px solid rgba(255,255,255,0.14);
+				border-radius: 14px;
+				padding: 1.2rem;
+				background: rgba(255,255,255,0.04);
+				backdrop-filter: blur(8px);
+				-webkit-backdrop-filter: blur(8px);
 			}
 
 			.quote-box {
-				border: 1px solid rgba(255,255,255,0.16);
-				border-radius: 14px;
-				padding: 1.2rem;
 				margin-top: 1.5rem;
-				background: rgba(255,255,255,0.03);
 			}
 
 			.quote-result {
@@ -82,21 +128,6 @@
 				margin-top: 1.25rem;
 			}
 
-			.service-card {
-				border: 1px solid rgba(255,255,255,0.14);
-				border-radius: 14px;
-				padding: 1rem;
-				background: rgba(255,255,255,0.03);
-			}
-
-			.contact-box {
-				border: 1px solid rgba(255,255,255,0.12);
-				border-radius: 14px;
-				padding: 1.25rem;
-				background: rgba(255,255,255,0.03);
-				margin-bottom: 1.25rem;
-			}
-
 			.phone-link {
 				font-size: 1.2rem;
 				font-weight: 700;
@@ -109,15 +140,35 @@
 			}
 
 			.muted {
-				opacity: 0.76;
+				opacity: 0.78;
+				color: var(--snap-text-soft);
 			}
 
 			.review-block {
-				border-left: 3px solid #1f6ed4;
+				border-left: 3px solid var(--snap-blue);
 				padding-left: 1rem;
 				margin-bottom: 1rem;
 			}
 
+			.note-line {
+				font-size: 0.95rem;
+				opacity: 0.85;
+			}
+
+			/* NICE TOUCHES */
+			#header .content .inner h1 {
+				letter-spacing: 0.25rem;
+			}
+
+			#header nav ul li a {
+				transition: all 0.25s ease;
+			}
+
+			#header nav ul li a:hover {
+				background: rgba(31, 110, 212, 0.12);
+			}
+
+			/* MOBILE */
 			@media screen and (max-width: 736px) {
 				.quick-points,
 				.service-grid {
@@ -128,6 +179,15 @@
 					flex-direction: column;
 					align-items: stretch;
 				}
+
+				#header .logo {
+					width: 7.25rem;
+					height: 7.25rem;
+				}
+
+				#header .content .inner h1 {
+					letter-spacing: 0.16rem;
+				}
 			}
 		</style>
 	</head>
@@ -137,14 +197,14 @@
 
 			<header id="header">
 				<div class="logo">
-	<img src="images/logo.png" class="snap-logo" style="width: 120px; height: auto;">
-</div>
+					<img src="images/logo.png" alt="SnapMount logo" class="snap-logo" />
+				</div>
 
 				<div class="content">
 					<div class="inner">
-						<h1>SnapMount</h1>
+						<h1>SNAPMOUNT</h1>
 						<p class="brand-subtitle">TV Mount Services</p>
-						<p>
+						<p class="hero-copy">
 							Professional TV mounting in Phoenix, Arizona.<br />
 							Clean installation. Secure setup. Fast service that feels premium from start to finish.
 						</p>
@@ -369,6 +429,8 @@
 								<textarea name="message" id="message" rows="4" placeholder='Example: 65" TV, drywall, need cable concealment.'></textarea>
 							</div>
 						</div>
+
+						<p class="note-line">This form is for layout right now. The fastest way to book is still call or text.</p>
 
 						<ul class="actions">
 							<li><a href="tel:6025823932" class="button primary">Call to Book</a></li>
