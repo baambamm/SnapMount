@@ -1,615 +1,158 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>SnapMount | TV Mount Services in Phoenix, Arizona</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<meta name="description" content="SnapMount offers professional TV mount services in Phoenix, Arizona. Fast, clean, secure installation with modern service and easy booking." />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-
-		<style>
-			:root {
-				--snap-blue: #1f6ed4;
-				--snap-blue-dark: #1657aa;
-				--snap-glass: rgba(255, 255, 255, 0.05);
-				--snap-border: rgba(255, 255, 255, 0.12);
-				--snap-text-soft: rgba(255, 255, 255, 0.78);
-			}
-
-			#header .logo {
-				width: 9rem;
-				height: 9rem;
-				border: 0 !important;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				background: transparent !important;
-				box-shadow: none !important;
-				margin: 0 auto 1.25rem auto;
-				overflow: visible;
-			}
-
-			#header .logo:before,
-			#header .logo:after {
-				display: none !important;
-			}
-
-			.snap-logo {
-				width: 100%;
-				height: 100%;
-				object-fit: contain;
-				display: block;
-				border-radius: 50%;
-				filter: drop-shadow(0 10px 24px rgba(31, 110, 212, 0.22));
-			}
-
-			.brand-subtitle {
-				font-size: 0.95rem;
-				letter-spacing: 0.22rem;
-				text-transform: uppercase;
-				opacity: 0.82;
-				margin-top: 0.35rem;
-				margin-bottom: 0.8rem;
-			}
-
-			.hero-copy {
-				max-width: 47rem;
-				margin: 0 auto;
-			}
-
-			.hero-buttons {
-				margin-top: 1.5rem;
-				display: flex;
-				gap: 0.75rem;
-				flex-wrap: wrap;
-				justify-content: center;
-			}
-
-			.button.primary {
-				background: var(--snap-blue) !important;
-				border-color: var(--snap-blue) !important;
-				box-shadow: 0 10px 30px rgba(31, 110, 212, 0.25);
-			}
-
-			.button.primary:hover {
-				background: var(--snap-blue-dark) !important;
-				border-color: var(--snap-blue-dark) !important;
-			}
-
-			.quick-points {
-				display: grid;
-				grid-template-columns: repeat(3, 1fr);
-				gap: 1rem;
-				margin-top: 1.75rem;
-			}
-
-			.quick-point {
-				border: 1px solid var(--snap-border);
-				border-radius: 14px;
-				padding: 1rem;
-				text-align: center;
-				background: var(--snap-glass);
-				backdrop-filter: blur(8px);
-				-webkit-backdrop-filter: blur(8px);
-			}
-
-			.quote-box,
-			.service-card,
-			.contact-box {
-				border: 1px solid rgba(255,255,255,0.14);
-				border-radius: 14px;
-				padding: 1.2rem;
-				background: rgba(255,255,255,0.04);
-				backdrop-filter: blur(8px);
-				-webkit-backdrop-filter: blur(8px);
-			}
-
-			.quote-box {
-				margin-top: 1.5rem;
-			}
-
-			.quote-result {
-				margin-top: 1rem;
-				padding: 1rem;
-				border-radius: 12px;
-				background: rgba(31, 110, 212, 0.12);
-				border: 1px solid rgba(31, 110, 212, 0.35);
-				display: none;
-			}
-
-			.service-grid {
-				display: grid;
-				grid-template-columns: repeat(2, 1fr);
-				gap: 1rem;
-				margin-top: 1.25rem;
-			}
-
-			.phone-link {
-				font-size: 1.2rem;
-				font-weight: 700;
-				color: #6ea8ff !important;
-				text-decoration: none;
-			}
-
-			.phone-link:hover {
-				color: #9bc1ff !important;
-			}
-
-			.muted {
-				opacity: 0.78;
-				color: var(--snap-text-soft);
-			}
-
-			.review-block {
-				border-left: 3px solid var(--snap-blue);
-				padding-left: 1rem;
-				margin-bottom: 1rem;
-			}
-
-			.note-line {
-				font-size: 0.95rem;
-				opacity: 0.85;
-			}
-
-			.price-line {
-				margin-bottom: 0.4rem;
-			}
-
-			.quote-highlight {
-				font-size: 1.35rem;
-				font-weight: 800;
-			}
-
-			#header .content .inner h1 {
-				letter-spacing: 0.25rem;
-			}
-
-			#header nav ul li a {
-				transition: all 0.25s ease;
-			}
-
-			#header nav ul li a:hover {
-				background: rgba(31, 110, 212, 0.12);
-			}
-
-			@media screen and (max-width: 736px) {
-				.quick-points,
-				.service-grid {
-					grid-template-columns: 1fr;
-				}
-
-				.hero-buttons {
-					flex-direction: column;
-					align-items: stretch;
-				}
-
-				#header .logo {
-					width: 7.25rem;
-					height: 7.25rem;
-				}
-
-				#header .content .inner h1 {
-					letter-spacing: 0.16rem;
-				}
-			}
-		</style>
-	</head>
-	<body class="is-preload">
-
-		<div id="wrapper">
-
-			<header id="header">
-				<div class="logo">
-					<img src="images/logo.png" alt="SnapMount logo" class="snap-logo" />
-				</div>
-
-				<div class="content">
-					<div class="inner">
-						<h1>SNAPMOUNT</h1>
-						<p class="brand-subtitle">TV Mount Services</p>
-						<p class="hero-copy">
-							Professional TV mounting in Phoenix, Arizona.<br />
-							Clean installation. Secure setup. Fast service that feels premium from start to finish.
-						</p>
-
-						<div class="hero-buttons">
-							<a href="#quote" class="button primary">Get an Exact Quote</a>
-							<a href="tel:6025823932" class="button">Call Now</a>
-						</div>
-
-						<div class="quick-points">
-							<div class="quick-point">
-								<strong>Fast Booking</strong>
-								<div class="muted">Quote in seconds</div>
-							</div>
-							<div class="quick-point">
-								<strong>Clean Setup</strong>
-								<div class="muted">Modern, polished finish</div>
-							</div>
-							<div class="quick-point">
-								<strong>Phoenix, AZ</strong>
-								<div class="muted">Local service area</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<nav>
-					<ul>
-						<li><a href="#intro">Home</a></li>
-						<li><a href="#services">Services</a></li>
-						<li><a href="#quote">Quote</a></li>
-						<li><a href="#about">About</a></li>
-						<li><a href="#contact">Book</a></li>
-					</ul>
-				</nav>
-			</header>
-
-			<div id="main">
-
-				<article id="intro">
-					<h2 class="major">Modern TV Mounting</h2>
-					<span class="image main"><img src="images/pic01.jpg" alt="Modern TV wall mounting setup" /></span>
-
-					<p>
-						SnapMount helps homeowners get that clean, floating-TV look without the stress. We focus on secure installation,
-						sharp alignment, and a setup that looks intentional, not improvised.
-					</p>
-
-					<p>
-						Whether you're mounting a bedroom TV, upgrading a living room centerpiece, or setting up a new space,
-						we keep the process simple and smooth. Less back-and-forth, less guesswork, more done-right energy.
-					</p>
-
-					<ul class="actions">
-						<li><a href="#quote" class="button primary">Start My Quote</a></li>
-						<li><a href="#services" class="button">See Services</a></li>
-					</ul>
-				</article>
-
-				<article id="services">
-					<h2 class="major">Services</h2>
-					<span class="image main"><img src="images/pic02.jpg" alt="Wall mounted TV in premium living room" /></span>
-
-					<p>
-						We keep it simple, clean, and client-friendly. These are the most common services people ask for:
-					</p>
-
-					<div class="service-grid">
-						<div class="service-card">
-							<h3>32" to 43" TV Mounting</h3>
-							<p>Perfect for bedrooms, offices, and smaller spaces that still deserve a sharp, level install.</p>
-						</div>
-
-						<div class="service-card">
-							<h3>44" to 55" TV Mounting</h3>
-							<p>Popular living room and bedroom installs with secure mounting and clean alignment.</p>
-						</div>
-
-						<div class="service-card">
-							<h3>56" to 70" TV Mounting</h3>
-							<p>Mid-to-large screen installs for clients who want a bigger visual impact done right.</p>
-						</div>
-
-						<div class="service-card">
-							<h3>71" to 85" TV Mounting</h3>
-							<p>Extra care for large screens that need stronger support, cleaner positioning, and more precision.</p>
-						</div>
-
-						<div class="service-card">
-							<h3>Cable Concealment</h3>
-							<p>Cleaner look with reduced visible wires for a more polished finish when the wall setup allows it.</p>
-						</div>
-
-						<div class="service-card">
-							<h3>Soundbar Mounting</h3>
-							<p>Add-on setup for a complete entertainment wall that looks intentional, not pieced together.</p>
-						</div>
-					</div>
-
-					<p style="margin-top: 1.5rem;">
-						Need something custom? No problem. If your wall type, TV size, or room setup is unusual, we can still point you in the right direction.
-					</p>
-				</article>
-
-				<article id="quote">
-					<h2 class="major">Get Your Exact Quote</h2>
-
-					<p>
-						Choose your exact TV size and setup details to get a more precise estimate before booking.
-					</p>
-
-					<div class="quote-box">
-						<form id="quoteForm">
-							<div class="fields">
-								<div class="field half">
-									<label for="tvsize">Exact TV Size</label>
-									<select id="tvsize" name="tvsize"></select>
-								</div>
-
-								<div class="field half">
-									<label for="walltype">Wall Type</label>
-									<select id="walltype" name="walltype">
-										<option value="drywall">Drywall / Stud</option>
-										<option value="brick">Brick (+$40)</option>
-										<option value="concrete">Concrete (+$55)</option>
-									</select>
-								</div>
-
-								<div class="field half">
-									<label for="conceal">Cable Concealment</label>
-									<select id="conceal" name="conceal">
-										<option value="false">No</option>
-										<option value="true">Yes (+$45)</option>
-									</select>
-								</div>
-
-								<div class="field half">
-									<label for="soundbar">Soundbar Mounting</label>
-									<select id="soundbar" name="soundbar">
-										<option value="false">No</option>
-										<option value="true">Yes (+$35)</option>
-									</select>
-								</div>
-							</div>
-
-							<ul class="actions">
-								<li><button type="button" class="button primary" onclick="calculateQuote()">Calculate Price</button></li>
-								<li><button type="reset" class="button" onclick="resetQuote()">Reset</button></li>
-							</ul>
-						</form>
-
-						<div id="quoteResult" class="quote-result">
-							<h3 style="margin-bottom: 0.5rem;">Your Estimate</h3>
-
-							<p id="quoteBreakdown" class="muted" style="margin-bottom: 0.85rem;"></p>
-
-							<p class="price-line">
-								<strong>Total Price:</strong>
-								<span id="quotePrice" class="quote-highlight"></span>
-							</p>
-
-							<p class="price-line">
-								<strong>Book Today With 40% Deposit:</strong>
-								<span id="depositPrice" style="font-weight: 700;"></span>
-							</p>
-
-							<p class="price-line" style="margin-bottom: 0.75rem;">
-								<strong>Remaining Balance After Deposit:</strong>
-								<span id="remainingPrice" style="font-weight: 700;"></span>
-							</p>
-
-							<p class="muted">
-								Final pricing may vary for special wall conditions, difficult access, or custom installations.
-							</p>
-
-							<ul class="actions" style="margin-top: 1rem;">
-								<li><button type="button" class="button primary" onclick="startCheckout('deposit')">Book with 40% Deposit</button></li>
-								<li><button type="button" class="button" onclick="startCheckout('full')">Pay in Full</button></li>
-								<li><button type="button" class="button" onclick="startCheckout('in_person')">Pay in Person</button></li>
-							</ul>
-
-							<p class="note-line" style="margin-top: 0.75rem;">
-								Secure checkout available with Apple Pay, cards, and other supported payment methods.
-							</p>
-						</div>
-					</div>
-				</article>
-
-				<article id="about">
-					<h2 class="major">About SnapMount</h2>
-					<span class="image main"><img src="images/pic03.jpg" alt="Professional TV mount installation service" /></span>
-
-					<p>
-						SnapMount was built around one simple idea: the booking experience should feel as clean as the final result on the wall.
-						That means less clutter, less confusion, and a process that feels modern from the first click.
-					</p>
-
-					<p>
-						We serve Phoenix, Arizona, and focus on making TV mounting easier for people who want a secure setup without the usual headache.
-						Quick communication, clean results, and a brand that feels sharp. That’s the lane.
-					</p>
-
-					<div class="review-block">
-						<p><strong>Clean finish.</strong> Customers care about how it looks after the install, not just whether it stays on the wall.</p>
-					</div>
-
-					<div class="review-block">
-						<p><strong>Fast response.</strong> People want a quote quickly and a simple way to move forward.</p>
-					</div>
-
-					<div class="review-block">
-						<p><strong>Premium feel.</strong> The vibe matters. The website, the communication, the service, all of it.</p>
-					</div>
-				</article>
-
-				<article id="contact">
-					<h2 class="major">Book Your Service</h2>
-
-					<div class="contact-box">
-						<p><strong>Phone:</strong><br />
-						<a href="tel:6025823932" class="phone-link">(602) 582-3932</a></p>
-
-						<p><strong>Email:</strong><br />
-						<a href="mailto:snapmountaz@gmail.com">snapmountaz@gmail.com</a></p>
-
-						<p><strong>Service Area:</strong><br />
-						Phoenix, Arizona</p>
-
-						<p><strong>Best way to book:</strong><br />
-						Call, text, or email your TV size, wall type, and a photo of the install area for the fastest response.</p>
-					</div>
-
-					<form method="post" action="#">
-						<div class="fields">
-							<div class="field half">
-								<label for="name">Name</label>
-								<input type="text" name="name" id="name" />
-							</div>
-							<div class="field half">
-								<label for="phone">Phone</label>
-								<input type="text" name="phone" id="phone" />
-							</div>
-							<div class="field half">
-								<label for="email">Email</label>
-								<input type="text" name="email" id="email" />
-							</div>
-							<div class="field half">
-								<label for="service">Service Needed</label>
-								<input type="text" name="service" id="service" />
-							</div>
-							<div class="field">
-								<label for="message">Project Details</label>
-								<textarea name="message" id="message" rows="4" placeholder='Example: 65" TV, drywall, need cable concealment.'></textarea>
-							</div>
-						</div>
-
-						<p class="note-line">This form is for layout right now. The fastest way to book is still call, text, or email.</p>
-
-						<ul class="actions">
-							<li><a href="tel:6025823932" class="button primary">Call to Book</a></li>
-							<li><a href="sms:6025823932" class="button">Text Us</a></li>
-							<li><a href="mailto:snapmountaz@gmail.com" class="button">Email Us</a></li>
-						</ul>
-					</form>
-
-					<ul class="icons">
-						<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="tel:6025823932" class="icon solid fa-phone"><span class="label">Phone</span></a></li>
-						<li><a href="mailto:snapmountaz@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
-				</article>
-
-			</div>
-
-			<footer id="footer">
-				<p class="copyright">&copy; SnapMount. TV Mount Services in Phoenix, Arizona.</p>
-			</footer>
-
-		</div>
-
-		<div id="bg"></div>
-
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-
-		<script>
-			const tvBasePrices = {
-				32: 99, 33: 99, 34: 99, 35: 99, 36: 99, 37: 99, 38: 99, 39: 99,
-				40: 109, 41: 109, 42: 109, 43: 109,
-				44: 114, 45: 114, 46: 114, 47: 114,
-				48: 119, 49: 119, 50: 119,
-				51: 124, 52: 124, 53: 124,
-				54: 129, 55: 129,
-				56: 134, 57: 134, 58: 134,
-				59: 139, 60: 139,
-				61: 144, 62: 144, 63: 144,
-				64: 149, 65: 149,
-				66: 154, 67: 154, 68: 154,
-				69: 159, 70: 159,
-				71: 164, 72: 164, 73: 164,
-				74: 169, 75: 169,
-				76: 174, 77: 174, 78: 174,
-				79: 179, 80: 179,
-				81: 184, 82: 184,
-				83: 189, 84: 189, 85: 189
-			};
-
-			const tvSizeSelect = document.getElementById('tvsize');
-
-			function populateTvSizes() {
-				let options = '';
-				for (let i = 32; i <= 85; i++) {
-					options += `<option value="${i}">${i}" TV</option>`;
-				}
-				tvSizeSelect.innerHTML = options;
-			}
-
-			function calculateQuote() {
-				const size = parseInt(document.getElementById('tvsize').value, 10);
-				const wallType = document.getElementById('walltype').value;
-				const concealment = document.getElementById('conceal').value === 'true';
-				const soundbar = document.getElementById('soundbar').value === 'true';
-
-				let total = tvBasePrices[size] || 189;
-
-				if (wallType === 'brick') total += 40;
-				if (wallType === 'concrete') total += 55;
-				if (concealment) total += 45;
-				if (soundbar) total += 35;
-
-				const deposit = Math.round(total * 0.40);
-				const remaining = total - deposit;
-
-				const wallLabelMap = {
-					drywall: 'Drywall / Stud',
-					brick: 'Brick',
-					concrete: 'Concrete'
-				};
-
-				document.getElementById('quoteBreakdown').textContent =
-					`${size}" TV • ${wallLabelMap[wallType]} • Cable Concealment: ${concealment ? 'Yes' : 'No'} • Soundbar: ${soundbar ? 'Yes' : 'No'}`;
-
-				document.getElementById('quotePrice').textContent = `$${total}`;
-				document.getElementById('depositPrice').textContent = `$${deposit}`;
-				document.getElementById('remainingPrice').textContent = `$${remaining}`;
-
-				document.getElementById('quoteResult').style.display = 'block';
-			}
-
-			function resetQuote() {
-				document.getElementById('quoteResult').style.display = 'none';
-				document.getElementById('quoteBreakdown').textContent = '';
-				document.getElementById('quotePrice').textContent = '';
-				document.getElementById('depositPrice').textContent = '';
-				document.getElementById('remainingPrice').textContent = '';
-			}
-
-			async function startCheckout(paymentOption) {
-				const size = parseInt(document.getElementById('tvsize').value, 10);
-				const wallType = document.getElementById('walltype').value;
-				const concealment = document.getElementById('conceal').value === 'true';
-				const soundbar = document.getElementById('soundbar').value === 'true';
-
-				if (paymentOption === 'in_person') {
-					window.location.href = '#contact';
-					return;
-				}
-
-				try {
-					const response = await fetch('/api/create-checkout-session', {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json'
-						},
-						body: JSON.stringify({
-							size,
-							wallType,
-							concealment,
-							soundbar,
-							paymentOption
-						})
-					});
-
-					const data = await response.json();
-
-					if (data.url) {
-						window.location.href = data.url;
-					} else {
-						alert('Payment setup is not connected yet. For now, call, text, or email to book.');
-						window.location.href = '#contact';
-					}
-				} catch (error) {
-					alert('Payment setup is not connected yet. For now, call, text, or email to book.');
-					window.location.href = '#contact';
-				}
-			}
-
-			populateTvSizes();
-		</script>
-	</body>
+<head>
+	<title>SnapMount | TV Mount Services Phoenix</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<style>
+		body {
+			font-family: Arial;
+			background: #0f172a;
+			color: white;
+			text-align: center;
+			padding: 40px;
+		}
+
+		.container {
+			max-width: 600px;
+			margin: auto;
+		}
+
+		select, button {
+			padding: 10px;
+			margin: 10px;
+			width: 100%;
+			border-radius: 8px;
+			border: none;
+		}
+
+		button {
+			background: #2563eb;
+			color: white;
+			cursor: pointer;
+		}
+
+		.result {
+			margin-top: 20px;
+			padding: 20px;
+			border-radius: 10px;
+			background: #1e293b;
+		}
+
+		a {
+			color: #60a5fa;
+		}
+	</style>
+</head>
+
+<body>
+
+<div class="container">
+
+	<h1>SnapMount</h1>
+	<p>Professional TV Mounting in Phoenix, Arizona</p>
+
+	<h2>Get Your Exact Quote</h2>
+
+	<select id="tvsize"></select>
+
+	<select id="wall">
+		<option value="drywall">Drywall</option>
+		<option value="brick">Brick (+40)</option>
+		<option value="concrete">Concrete (+55)</option>
+	</select>
+
+	<select id="conceal">
+		<option value="false">No Cable Concealment</option>
+		<option value="true">Cable Concealment (+45)</option>
+	</select>
+
+	<select id="soundbar">
+		<option value="false">No Soundbar</option>
+		<option value="true">Soundbar (+35)</option>
+	</select>
+
+	<button onclick="calculate()">Calculate Price</button>
+
+	<div id="result" class="result" style="display:none;">
+		<p id="total"></p>
+		<p id="deposit"></p>
+		<p id="remaining"></p>
+
+		<button onclick="checkout('deposit')">Book with Deposit</button>
+		<button onclick="checkout('full')">Pay in Full</button>
+		<button onclick="checkout('in_person')">Pay in Person</button>
+	</div>
+
+	<br><br>
+
+	<p>📞 <a href="tel:6025823932">(602) 582-3932</a></p>
+	<p>📧 <a href="mailto:snapmountaz@gmail.com">snapmountaz@gmail.com</a></p>
+
+</div>
+
+<script>
+
+// tamaños reales
+const sizes = [32,40,43,50,55,65,70,75,77,83,85];
+
+// precios base
+const prices = {
+	32: 99,
+	40: 109,
+	43: 109,
+	50: 119,
+	55: 129,
+	65: 149,
+	70: 159,
+	75: 169,
+	77: 179,
+	83: 189,
+	85: 189
+};
+
+// llenar dropdown
+const select = document.getElementById("tvsize");
+sizes.forEach(s => {
+	select.innerHTML += `<option value="${s}">${s}" TV</option>`;
+});
+
+function calculate(){
+
+	let size = document.getElementById("tvsize").value;
+	let wall = document.getElementById("wall").value;
+	let conceal = document.getElementById("conceal").value === "true";
+	let soundbar = document.getElementById("soundbar").value === "true";
+
+	let total = prices[size];
+
+	if(wall === "brick") total += 40;
+	if(wall === "concrete") total += 55;
+	if(conceal) total += 45;
+	if(soundbar) total += 35;
+
+	let deposit = Math.round(total * 0.4);
+	let remaining = total - deposit;
+
+	document.getElementById("total").innerText = "Total: $" + total;
+	document.getElementById("deposit").innerText = "Deposit (40%): $" + deposit;
+	document.getElementById("remaining").innerText = "Remaining: $" + remaining;
+
+	document.getElementById("result").style.display = "block";
+}
+
+async function checkout(type){
+
+	if(type === "in_person"){
+		alert("We will contact you to schedule the installation.");
+		return;
+	}
+
+	alert("Stripe backend not connected yet.\nNext step is setting backend.");
+}
+
+</script>
+
+</body>
 </html>
