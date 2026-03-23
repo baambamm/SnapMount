@@ -1,289 +1,484 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-	<title>SnapMount | TV Mount Services Phoenix</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<head>
+		<title>SnapMount | TV Mount Services in Phoenix, Arizona</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="SnapMount offers professional TV mount services in Phoenix, Arizona. Fast, clean, secure installation with modern service and easy booking." />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
-	<style>
-		body {
-			margin: 0;
-			font-family: Arial;
-			background: linear-gradient(180deg, #0f172a, #020617);
-			color: white;
-		}
-
-		.container {
-			max-width: 1100px;
-			margin: auto;
-			padding: 40px 20px;
-		}
-
-		.hero {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 20px;
-			align-items: center;
-		}
-
-		.card {
-			background: rgba(255,255,255,0.05);
-			border-radius: 20px;
-			padding: 30px;
-			backdrop-filter: blur(10px);
-		}
-
-		h1 {
-			font-size: 48px;
-			margin: 10px 0;
-		}
-
-		button {
-			padding: 12px 20px;
-			border-radius: 10px;
-			border: none;
-			cursor: pointer;
-			margin-right: 10px;
-		}
-
-		.primary {
-			background: #2563eb;
-			color: white;
-		}
-
-		.secondary {
-			background: rgba(255,255,255,0.1);
-			color: white;
-		}
-
-		.stats {
-			display: flex;
-			gap: 10px;
-			margin-top: 20px;
-		}
-
-		.stat {
-			background: rgba(255,255,255,0.05);
-			padding: 10px;
-			border-radius: 10px;
-			text-align: center;
-			flex: 1;
-			font-size: 14px;
-		}
-
-		/* TELE ANIMADA 🔥 */
-		.tv {
-			height: 250px;
-			border-radius: 20px;
-			background: linear-gradient(145deg,#1e3a8a,#020617);
-			position: relative;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-
-		.tv::before {
-			content: "";
-			position: absolute;
-			width: 70%;
-			height: 60%;
-			border: 8px solid black;
-			border-radius: 12px;
-		}
-
-		.screen {
-			position: absolute;
-			width: 65%;
-			height: 50%;
-			background: linear-gradient(145deg,#1d4ed8,#020617);
-			border-radius: 10px;
-		}
-
-		.line {
-			position: absolute;
-			width: 60%;
-			height: 2px;
-			background: white;
-			transform: rotate(-20deg);
-		}
-
-		.arrow {
-			width: 10px;
-			height: 10px;
-			border-top: 2px solid white;
-			border-right: 2px solid white;
-			position: absolute;
-		}
-
-		.arrow1 {
-			left: 20%;
-			top: 60%;
-			transform: rotate(135deg);
-		}
-
-		.arrow2 {
-			right: 20%;
-			top: 40%;
-			transform: rotate(-45deg);
-		}
-
-		.label {
-			position: absolute;
-			background: rgba(0,0,0,0.7);
-			padding: 5px 10px;
-			border-radius: 20px;
-			font-weight: bold;
-		}
-
-		select {
-			padding: 10px;
-			margin: 10px 0;
-			width: 100%;
-			border-radius: 10px;
-		}
-
-		.result {
-			margin-top: 20px;
-			background: rgba(37,99,235,0.2);
-			padding: 20px;
-			border-radius: 10px;
-			display: none;
-		}
-
-		@media(max-width:800px){
-			.hero {
-				grid-template-columns: 1fr;
+		<style>
+			:root {
+				--snap-blue: #1f6ed4;
+				--snap-blue-dark: #1657aa;
+				--snap-glass: rgba(255, 255, 255, 0.05);
+				--snap-border: rgba(255, 255, 255, 0.12);
+				--snap-text-soft: rgba(255, 255, 255, 0.78);
 			}
-		}
-	</style>
-</head>
 
-<body>
+			/* LOGO */
+			#header .logo {
+				width: 9rem;
+				height: 9rem;
+				border: 0 !important;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: transparent !important;
+				box-shadow: none !important;
+				margin: 0 auto 1.25rem auto;
+				overflow: visible;
+			}
 
-<div class="container">
+			#header .logo:before,
+			#header .logo:after {
+				display: none !important;
+			}
 
-	<div class="hero">
+			.snap-logo {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+				display: block;
+				border-radius: 50%;
+				filter: drop-shadow(0 10px 24px rgba(31, 110, 212, 0.22));
+			}
 
-		<div class="card">
-			<p>Phoenix, Arizona • TV Mounting</p>
-			<h1>Clean installs.<br>Sharp finish.</h1>
-			<p>Professional TV mounting with a smoother booking experience.</p>
+			/* HERO */
+			.brand-subtitle {
+				font-size: 0.95rem;
+				letter-spacing: 0.22rem;
+				text-transform: uppercase;
+				opacity: 0.82;
+				margin-top: 0.35rem;
+				margin-bottom: 0.8rem;
+			}
 
-			<button class="primary">Get Exact Quote</button>
-			<button class="secondary">Call Now</button>
+			.hero-copy {
+				max-width: 47rem;
+				margin: 0 auto;
+			}
 
-			<div class="stats">
-				<div class="stat">Fast Quotes</div>
-				<div class="stat">Secure Setup</div>
-				<div class="stat">Flexible Payment</div>
+			.hero-buttons {
+				margin-top: 1.5rem;
+				display: flex;
+				gap: 0.75rem;
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+
+			.button.primary {
+				background: var(--snap-blue) !important;
+				border-color: var(--snap-blue) !important;
+				box-shadow: 0 10px 30px rgba(31, 110, 212, 0.25);
+			}
+
+			.button.primary:hover {
+				background: var(--snap-blue-dark) !important;
+				border-color: var(--snap-blue-dark) !important;
+			}
+
+			.quick-points {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 1rem;
+				margin-top: 1.75rem;
+			}
+
+			.quick-point {
+				border: 1px solid var(--snap-border);
+				border-radius: 14px;
+				padding: 1rem;
+				text-align: center;
+				background: var(--snap-glass);
+				backdrop-filter: blur(8px);
+				-webkit-backdrop-filter: blur(8px);
+			}
+
+			/* CONTENT CARDS */
+			.quote-box,
+			.service-card,
+			.contact-box {
+				border: 1px solid rgba(255,255,255,0.14);
+				border-radius: 14px;
+				padding: 1.2rem;
+				background: rgba(255,255,255,0.04);
+				backdrop-filter: blur(8px);
+				-webkit-backdrop-filter: blur(8px);
+			}
+
+			.quote-box {
+				margin-top: 1.5rem;
+			}
+
+			.quote-result {
+				margin-top: 1rem;
+				padding: 1rem;
+				border-radius: 12px;
+				background: rgba(31, 110, 212, 0.12);
+				border: 1px solid rgba(31, 110, 212, 0.35);
+				display: none;
+			}
+
+			.service-grid {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 1rem;
+				margin-top: 1.25rem;
+			}
+
+			.phone-link {
+				font-size: 1.2rem;
+				font-weight: 700;
+				color: #6ea8ff !important;
+				text-decoration: none;
+			}
+
+			.phone-link:hover {
+				color: #9bc1ff !important;
+			}
+
+			.muted {
+				opacity: 0.78;
+				color: var(--snap-text-soft);
+			}
+
+			.review-block {
+				border-left: 3px solid var(--snap-blue);
+				padding-left: 1rem;
+				margin-bottom: 1rem;
+			}
+
+			.note-line {
+				font-size: 0.95rem;
+				opacity: 0.85;
+			}
+
+			/* NICE TOUCHES */
+			#header .content .inner h1 {
+				letter-spacing: 0.25rem;
+			}
+
+			#header nav ul li a {
+				transition: all 0.25s ease;
+			}
+
+			#header nav ul li a:hover {
+				background: rgba(31, 110, 212, 0.12);
+			}
+
+			/* MOBILE */
+			@media screen and (max-width: 736px) {
+				.quick-points,
+				.service-grid {
+					grid-template-columns: 1fr;
+				}
+
+				.hero-buttons {
+					flex-direction: column;
+					align-items: stretch;
+				}
+
+				#header .logo {
+					width: 7.25rem;
+					height: 7.25rem;
+				}
+
+				#header .content .inner h1 {
+					letter-spacing: 0.16rem;
+				}
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<div id="wrapper">
+
+			<header id="header">
+				<div class="logo">
+					<img src="images/logo.png" alt="SnapMount logo" class="snap-logo" />
+				</div>
+
+				<div class="content">
+					<div class="inner">
+						<h1>SNAPMOUNT</h1>
+						<p class="brand-subtitle">TV Mount Services</p>
+						<p class="hero-copy">
+							Professional TV mounting in Phoenix, Arizona.<br />
+							Clean installation. Secure setup. Fast service that feels premium from start to finish.
+						</p>
+
+						<div class="hero-buttons">
+							<a href="#quote" class="button primary">Get a Fast Quote</a>
+							<a href="tel:6025823932" class="button">Call Now</a>
+						</div>
+
+						<div class="quick-points">
+							<div class="quick-point">
+								<strong>Fast Booking</strong>
+								<div class="muted">Simple quote flow</div>
+							</div>
+							<div class="quick-point">
+								<strong>Clean Setup</strong>
+								<div class="muted">Modern, polished finish</div>
+							</div>
+							<div class="quick-point">
+								<strong>Phoenix, AZ</strong>
+								<div class="muted">Local service area</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<nav>
+					<ul>
+						<li><a href="#intro">Home</a></li>
+						<li><a href="#services">Services</a></li>
+						<li><a href="#quote">Quote</a></li>
+						<li><a href="#about">About</a></li>
+						<li><a href="#contact">Book</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<div id="main">
+
+				<article id="intro">
+					<h2 class="major">Modern TV Mounting</h2>
+					<span class="image main"><img src="images/pic01.jpg" alt="Modern TV wall mounting setup" /></span>
+
+					<p>
+						SnapMount helps homeowners get that clean, floating-TV look without the stress. We focus on secure installation,
+						sharp alignment, and a setup that looks intentional, not improvised.
+					</p>
+
+					<p>
+						Whether you're mounting a bedroom TV, upgrading a living room centerpiece, or setting up a new space,
+						we keep the process simple and smooth. Less back-and-forth, less guesswork, more done-right energy.
+					</p>
+
+					<ul class="actions">
+						<li><a href="#quote" class="button primary">Start My Quote</a></li>
+						<li><a href="#services" class="button">See Services</a></li>
+					</ul>
+				</article>
+
+				<article id="services">
+					<h2 class="major">Services</h2>
+					<span class="image main"><img src="images/pic02.jpg" alt="Wall mounted TV in premium living room" /></span>
+
+					<p>
+						We keep it simple, clean, and client-friendly. These are the most common services people ask for:
+					</p>
+
+					<div class="service-grid">
+						<div class="service-card">
+							<h3>Standard TV Mounting</h3>
+							<p>Secure installation for most common TV sizes on drywall or wood studs.</p>
+						</div>
+
+						<div class="service-card">
+							<h3>Large TV Installation</h3>
+							<p>Extra care for bigger screens that need more precision and stronger support.</p>
+						</div>
+
+						<div class="service-card">
+							<h3>Cable Concealment</h3>
+							<p>Cleaner look with visible wire reduction for a more premium finish.</p>
+						</div>
+
+						<div class="service-card">
+							<h3>Soundbar Mounting</h3>
+							<p>Add-on setup for a complete entertainment wall that looks intentional.</p>
+						</div>
+					</div>
+
+					<p style="margin-top: 1.5rem;">
+						Need something custom? No problem. If your wall type, TV size, or room setup is unusual, we can still point you in the right direction.
+					</p>
+				</article>
+
+				<article id="quote">
+					<h2 class="major">Fast Quote</h2>
+
+					<p>
+						Answer a few quick questions to get a rough estimate. It is not a final invoice, but it helps the customer know what lane they’re in before booking.
+					</p>
+
+					<div class="quote-box">
+						<form id="quoteForm">
+							<div class="fields">
+								<div class="field half">
+									<label for="tvsize">TV Size</label>
+									<select id="tvsize" name="tvsize">
+										<option value="109">Under 40"</option>
+										<option value="139">40" - 65"</option>
+										<option value="179">65" - 85"</option>
+										<option value="229">85"+</option>
+									</select>
+								</div>
+
+								<div class="field half">
+									<label for="walltype">Wall Type</label>
+									<select id="walltype" name="walltype">
+										<option value="0">Drywall / Stud</option>
+										<option value="40">Brick</option>
+										<option value="55">Concrete</option>
+									</select>
+								</div>
+
+								<div class="field half">
+									<label for="conceal">Cable Concealment</label>
+									<select id="conceal" name="conceal">
+										<option value="0">No</option>
+										<option value="45">Yes</option>
+									</select>
+								</div>
+
+								<div class="field half">
+									<label for="soundbar">Soundbar Mounting</label>
+									<select id="soundbar" name="soundbar">
+										<option value="0">No</option>
+										<option value="35">Yes</option>
+									</select>
+								</div>
+							</div>
+
+							<ul class="actions">
+								<li><button type="button" class="button primary" onclick="calculateQuote()">Estimate Price</button></li>
+								<li><button type="reset" class="button" onclick="resetQuote()">Reset</button></li>
+							</ul>
+						</form>
+
+						<div id="quoteResult" class="quote-result">
+							<h3 style="margin-bottom: 0.5rem;">Estimated Range</h3>
+							<p id="quotePrice" style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem;"></p>
+							<p class="muted">
+								For exact pricing, call or text <strong>(602) 582-3932</strong> with your TV size, wall type, and a quick photo of the area.
+							</p>
+							<ul class="actions" style="margin-top: 1rem;">
+								<li><a href="tel:6025823932" class="button primary">Call Now</a></li>
+								<li><a href="#contact" class="button">Book Service</a></li>
+							</ul>
+						</div>
+					</div>
+				</article>
+
+				<article id="about">
+					<h2 class="major">About SnapMount</h2>
+					<span class="image main"><img src="images/pic03.jpg" alt="Professional TV mount installation service" /></span>
+
+					<p>
+						SnapMount was built around one simple idea: the booking experience should feel as clean as the final result on the wall.
+						That means less clutter, less confusion, and a process that feels modern from the first click.
+					</p>
+
+					<p>
+						We serve Phoenix, Arizona, and focus on making TV mounting easier for people who want a secure setup without the usual headache.
+						Quick communication, clean results, and a brand that feels sharp. That’s the lane.
+					</p>
+
+					<div class="review-block">
+						<p><strong>Clean finish.</strong> Customers care about how it looks after the install, not just whether it stays on the wall.</p>
+					</div>
+
+					<div class="review-block">
+						<p><strong>Fast response.</strong> People want a quote quickly and a simple way to move forward.</p>
+					</div>
+
+					<div class="review-block">
+						<p><strong>Premium feel.</strong> The vibe matters. The website, the communication, the service, all of it.</p>
+					</div>
+				</article>
+
+				<article id="contact">
+					<h2 class="major">Book Your Service</h2>
+
+					<div class="contact-box">
+						<p><strong>Phone:</strong><br />
+						<a href="tel:6025823932" class="phone-link">(602) 582-3932</a></p>
+
+						<p><strong>Service Area:</strong><br />
+						Phoenix, Arizona</p>
+
+						<p><strong>Best way to book:</strong><br />
+						Call or text your TV size, wall type, and a photo of the install area for the fastest response.</p>
+					</div>
+
+					<form method="post" action="#">
+						<div class="fields">
+							<div class="field half">
+								<label for="name">Name</label>
+								<input type="text" name="name" id="name" />
+							</div>
+							<div class="field half">
+								<label for="phone">Phone</label>
+								<input type="text" name="phone" id="phone" />
+							</div>
+							<div class="field half">
+								<label for="email">Email</label>
+								<input type="text" name="email" id="email" />
+							</div>
+							<div class="field half">
+								<label for="service">Service Needed</label>
+								<input type="text" name="service" id="service" />
+							</div>
+							<div class="field">
+								<label for="message">Project Details</label>
+								<textarea name="message" id="message" rows="4" placeholder='Example: 65" TV, drywall, need cable concealment.'></textarea>
+							</div>
+						</div>
+
+						<p class="note-line">This form is for layout right now. The fastest way to book is still call or text.</p>
+
+						<ul class="actions">
+							<li><a href="tel:6025823932" class="button primary">Call to Book</a></li>
+							<li><a href="sms:6025823932" class="button">Text Us</a></li>
+						</ul>
+					</form>
+
+					<ul class="icons">
+						<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="tel:6025823932" class="icon solid fa-phone"><span class="label">Phone</span></a></li>
+					</ul>
+				</article>
+
 			</div>
+
+			<footer id="footer">
+				<p class="copyright">&copy; SnapMount. TV Mount Services in Phoenix, Arizona.</p>
+			</footer>
+
 		</div>
 
-		<div class="card tv">
-			<div class="screen"></div>
-			<div class="line"></div>
-			<div class="arrow arrow1"></div>
-			<div class="arrow arrow2"></div>
-			<div class="label">32" - 85"</div>
-		</div>
+		<div id="bg"></div>
 
-	</div>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
 
-	<h2>Get Your Exact Quote</h2>
+		<script>
+			function calculateQuote() {
+				const tvsize = parseInt(document.getElementById('tvsize').value, 10);
+				const walltype = parseInt(document.getElementById('walltype').value, 10);
+				const conceal = parseInt(document.getElementById('conceal').value, 10);
+				const soundbar = parseInt(document.getElementById('soundbar').value, 10);
 
-	<select id="tvsize"></select>
+				const total = tvsize + walltype + conceal + soundbar;
+				const low = total;
+				const high = total + 25;
 
-	<select id="wall">
-		<option value="drywall">Drywall</option>
-		<option value="brick">Brick (+40)</option>
-		<option value="concrete">Concrete (+55)</option>
-	</select>
+				document.getElementById('quotePrice').textContent = '$' + low + ' - $' + high;
+				document.getElementById('quoteResult').style.display = 'block';
+			}
 
-	<select id="conceal">
-		<option value="false">No Cable Concealment</option>
-		<option value="true">Cable Concealment (+45)</option>
-	</select>
-
-	<select id="soundbar">
-		<option value="false">No Soundbar</option>
-		<option value="true">Soundbar (+35)</option>
-	</select>
-
-	<button class="primary" onclick="calculate()">Calculate Price</button>
-
-	<div id="result" class="result">
-		<p id="total"></p>
-		<p id="deposit"></p>
-		<p id="remaining"></p>
-
-		<button onclick="checkout('deposit')">Book with Deposit</button>
-		<button onclick="checkout('full')">Pay in Full</button>
-		<button onclick="checkout('in_person')">Pay in Person</button>
-	</div>
-
-	<br><br>
-
-	<p>📞 (602) 582-3932</p>
-	<p>📧 snapmountaz@gmail.com</p>
-
-</div>
-
-<script>
-
-const sizes = [32,40,43,50,55,65,70,75,77,83,85];
-
-const prices = {
-	32: 99,
-	40: 109,
-	43: 109,
-	50: 119,
-	55: 129,
-	65: 149,
-	70: 159,
-	75: 169,
-	77: 179,
-	83: 189,
-	85: 189
-};
-
-const select = document.getElementById("tvsize");
-sizes.forEach(s => {
-	select.innerHTML += `<option value="${s}">${s}" TV</option>`;
-});
-
-function calculate(){
-
-	let size = document.getElementById("tvsize").value;
-	let wall = document.getElementById("wall").value;
-	let conceal = document.getElementById("conceal").value === "true";
-	let soundbar = document.getElementById("soundbar").value === "true";
-
-	let total = prices[size];
-
-	if(wall === "brick") total += 40;
-	if(wall === "concrete") total += 55;
-	if(conceal) total += 45;
-	if(soundbar) total += 35;
-
-	let deposit = Math.round(total * 0.4);
-	let remaining = total - deposit;
-
-	document.getElementById("total").innerText = "Total: $" + total;
-	document.getElementById("deposit").innerText = "Deposit (40%): $" + deposit;
-	document.getElementById("remaining").innerText = "Remaining: $" + remaining;
-
-	document.getElementById("result").style.display = "block";
-}
-
-function checkout(type){
-	if(type === "in_person"){
-		alert("We will contact you to schedule.");
-		return;
-	}
-	alert("Stripe aún no conectado.");
-}
-
-</script>
-
-</body>
+			function resetQuote() {
+				document.getElementById('quoteResult').style.display = 'none';
+				document.getElementById('quotePrice').textContent = '';
+			}
+		</script>
+	</body>
 </html>
