@@ -76,29 +76,9 @@
 		}
 
 		.brand {
-			display: inline-flex;
-			align-items: center;
-			gap: 0.7rem;
 			font-weight: 800;
 			letter-spacing: 0.1rem;
 			font-size: 1rem;
-			color: var(--text);
-		}
-
-		.brand:hover {
-			color: var(--text);
-		}
-
-		.brand-logo {
-			width: 38px;
-			height: 38px;
-			object-fit: contain;
-			display: block;
-			filter: drop-shadow(0 6px 18px rgba(37,99,235,0.28));
-		}
-
-		.brand-text {
-			line-height: 1;
 		}
 
 		.nav-links {
@@ -274,31 +254,10 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			overflow: hidden;
-		}
-
-		.hero-img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			display: block;
-			border-radius: 12px;
-			opacity: 0;
-			transform: translateY(24px) scale(1.01);
-			animation: heroFadeUp 0.95s ease forwards;
-			transition: transform 0.5s ease, filter 0.4s ease;
-			filter: saturate(1.02) contrast(1.02);
-		}
-
-		.mock-screen:hover .hero-img {
-			transform: scale(1.035);
-		}
-
-		@keyframes heroFadeUp {
-			to {
-				opacity: 1;
-				transform: translateY(0) scale(1);
-			}
+			font-size: 1rem;
+			color: rgba(255,255,255,0.78);
+			text-align: center;
+			padding: 1rem;
 		}
 
 		.section {
@@ -509,11 +468,6 @@
 			h1 {
 				font-size: 2.5rem;
 			}
-
-			.brand-logo {
-				width: 34px;
-				height: 34px;
-			}
 		}
 	</style>
 </head>
@@ -521,10 +475,7 @@
 
 	<div class="topbar">
 		<div class="nav">
-			<a href="#home" class="brand">
-				<img src="images/logo.png" alt="SnapMount logo" class="brand-logo" />
-				<span class="brand-text">SNAPMOUNT</span>
-			</a>
+			<div class="brand">SNAPMOUNT</div>
 			<div class="nav-links">
 				<a href="#home">Home</a>
 				<a href="#services">Services</a>
@@ -546,4 +497,243 @@
 
 				<div class="hero-actions">
 					<a href="#quote" class="button primary">Get Exact Quote</a>
-					<a href="tel:6025823932"
+					<a href="tel:6025823932" class="button secondary">Call Now</a>
+				</div>
+
+				<div class="quick-stats">
+					<div class="stat">
+						<strong>Fast Quotes</strong>
+						<span>Clear pricing in seconds</span>
+					</div>
+					<div class="stat">
+						<strong>Secure Setup</strong>
+						<span>Level, clean, reliable installs</span>
+					</div>
+					<div class="stat">
+						<strong>Flexible Payment</strong>
+						<span>Deposit, full, or in person</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="panel hero-card">
+				<div class="mock">
+					<div class="mock-screen">
+						Modern TV mounting for bedrooms, living rooms, apartments, and homes in Phoenix.
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section wrapper" id="services">
+		<h2 class="section-title">Services</h2>
+		<p class="section-sub">Straightforward options with a cleaner, more premium feel.</p>
+
+		<div class="cards-3">
+			<div class="card">
+				<h3>TV Mount Installation</h3>
+				<p>Professional wall mounting for common TV sizes from 32" to 85", with clean alignment and secure setup.</p>
+			</div>
+			<div class="card">
+				<h3>Cable Concealment</h3>
+				<p>Cleaner-looking installs with less visible wiring when the wall setup allows it.</p>
+			</div>
+			<div class="card">
+				<h3>Soundbar Mounting</h3>
+				<p>Optional add-on for a more complete entertainment setup that feels intentional, not pieced together.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section wrapper" id="quote">
+		<h2 class="section-title">Get Your Exact Quote</h2>
+		<p class="section-sub">Choose your TV size and setup details to estimate your service total before booking.</p>
+
+		<div class="quote-wrap">
+			<div class="quote-box">
+				<form id="quoteForm">
+					<div class="fields">
+						<div class="field">
+							<label for="tvsize">Select Your TV Size</label>
+							<select id="tvsize"></select>
+						</div>
+
+						<div class="field">
+							<label for="wall">Wall Type</label>
+							<select id="wall">
+								<option value="drywall">Drywall / Stud</option>
+								<option value="brick">Brick (+$40)</option>
+								<option value="concrete">Concrete (+$55)</option>
+							</select>
+						</div>
+
+						<div class="field">
+							<label for="conceal">Cable Concealment</label>
+							<select id="conceal">
+								<option value="false">No</option>
+								<option value="true">Yes (+$45)</option>
+							</select>
+						</div>
+
+						<div class="field">
+							<label for="soundbar">Soundbar Mounting</label>
+							<select id="soundbar">
+								<option value="false">No</option>
+								<option value="true">Yes (+$35)</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="actions">
+						<button type="button" class="primary" onclick="calculate()">Calculate Price</button>
+						<button type="reset" class="secondary" onclick="resetQuote()">Reset</button>
+					</div>
+				</form>
+
+				<div id="result" class="quote-result">
+					<h3>Your Estimate</h3>
+					<div id="breakdown" class="quote-breakdown"></div>
+
+					<div class="price-row">
+						<strong>Total Price</strong>
+						<span id="total" class="price-val"></span>
+					</div>
+					<div class="price-row">
+						<strong>Book Today With 40% Deposit</strong>
+						<span id="deposit" class="price-val"></span>
+					</div>
+					<div class="price-row">
+						<strong>Remaining Balance</strong>
+						<span id="remaining" class="price-val"></span>
+					</div>
+
+					<div class="actions">
+						<button type="button" class="primary" onclick="checkout('deposit')">Book with Deposit</button>
+						<button type="button" class="secondary" onclick="checkout('full')">Pay in Full</button>
+						<button type="button" class="secondary" onclick="checkout('in_person')">Pay in Person</button>
+					</div>
+
+					<p class="quote-note">
+						Secure checkout can be connected with Stripe for Apple Pay, cards, and other supported payment methods.
+					</p>
+				</div>
+			</div>
+
+			<div class="contact-box">
+				<h3 style="margin-bottom: 0.8rem;">Booking Details</h3>
+				<div class="contact-lines">
+					<p><strong>Phone:</strong><br><a href="tel:6025823932">(602) 582-3932</a></p>
+					<p><strong>Email:</strong><br><a href="mailto:snapmountaz@gmail.com">snapmountaz@gmail.com</a></p>
+					<p><strong>Service Area:</strong><br>Phoenix, Arizona</p>
+					<p><strong>Best way to book:</strong><br>Call, text, or email your TV size, wall type, and a photo of the install area for the fastest response.</p>
+				</div>
+
+				<div class="actions">
+					<a href="tel:6025823932" class="button primary">Call Now</a>
+					<a href="sms:6025823932" class="button secondary">Text Us</a>
+					<a href="mailto:snapmountaz@gmail.com" class="button secondary">Email Us</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section wrapper" id="contact">
+		<h2 class="section-title">Contact</h2>
+		<p class="section-sub">Ready to book or have a custom setup in mind? Reach out directly.</p>
+
+		<div class="cards-3">
+			<div class="card">
+				<h3>Call</h3>
+				<p><a href="tel:6025823932">(602) 582-3932</a></p>
+			</div>
+			<div class="card">
+				<h3>Email</h3>
+				<p><a href="mailto:snapmountaz@gmail.com">snapmountaz@gmail.com</a></p>
+			</div>
+			<div class="card">
+				<h3>Location</h3>
+				<p>Phoenix, Arizona</p>
+			</div>
+		</div>
+	</section>
+
+	<div class="footer wrapper">
+		© SnapMount • TV Mount Services in Phoenix, Arizona
+	</div>
+
+	<script>
+		const sizes = [32, 40, 43, 50, 55, 65, 70, 75, 77, 83, 85];
+
+		const prices = {
+			32: 99,
+			40: 109,
+			43: 109,
+			50: 119,
+			55: 129,
+			65: 149,
+			70: 159,
+			75: 169,
+			77: 179,
+			83: 189,
+			85: 189
+		};
+
+		const select = document.getElementById("tvsize");
+		sizes.forEach(s => {
+			select.innerHTML += `<option value="${s}">${s}" TV</option>`;
+		});
+
+		function calculate() {
+			let size = document.getElementById("tvsize").value;
+			let wall = document.getElementById("wall").value;
+			let conceal = document.getElementById("conceal").value === "true";
+			let soundbar = document.getElementById("soundbar").value === "true";
+
+			let total = prices[size];
+
+			if (wall === "brick") total += 40;
+			if (wall === "concrete") total += 55;
+			if (conceal) total += 45;
+			if (soundbar) total += 35;
+
+			let deposit = Math.round(total * 0.4);
+			let remaining = total - deposit;
+
+			const wallLabels = {
+				drywall: "Drywall / Stud",
+				brick: "Brick",
+				concrete: "Concrete"
+			};
+
+			document.getElementById("breakdown").innerText =
+				`${size}" TV • ${wallLabels[wall]} • Cable Concealment: ${conceal ? "Yes" : "No"} • Soundbar: ${soundbar ? "Yes" : "No"}`;
+
+			document.getElementById("total").innerText = "$" + total;
+			document.getElementById("deposit").innerText = "$" + deposit;
+			document.getElementById("remaining").innerText = "$" + remaining;
+
+			document.getElementById("result").style.display = "block";
+		}
+
+		function resetQuote() {
+			document.getElementById("result").style.display = "none";
+			document.getElementById("breakdown").innerText = "";
+			document.getElementById("total").innerText = "";
+			document.getElementById("deposit").innerText = "";
+			document.getElementById("remaining").innerText = "";
+		}
+
+		async function checkout(type) {
+			if (type === "in_person") {
+				alert("Perfect. We’ll contact you to schedule the installation.");
+				window.location.href = "#contact";
+				return;
+			}
+
+			alert("Stripe backend not connected yet.\nNext step is setting backend.");
+		}
+	</script>
+
+</body>
+</html>
