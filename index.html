@@ -519,7 +519,7 @@
 			<div class="panel hero-card">
 				<div class="mock">
 					<div class="mock-screen">
-						Modern TV mounting for bedrooms, living rooms, apartments, and homes in Phoenix.
+						Modern TV mounting for bedrooms, living rooms, apartments, and homes
 					</div>
 				</div>
 			</div>
@@ -537,7 +537,7 @@
 			</div>
 			<div class="card">
 				<h3>Cable Concealment</h3>
-				<p>Cleaner-looking installs with less visible wiring when the wall setup allows it.</p>
+				<p>Choose between a clean cable cover channel option or full in-wall concealment for a more premium finish.</p>
 			</div>
 			<div class="card">
 				<h3>Soundbar Mounting</h3>
@@ -563,16 +563,17 @@
 							<label for="wall">Wall Type</label>
 							<select id="wall">
 								<option value="drywall">Drywall / Stud</option>
-								<option value="brick">Brick (+$40)</option>
-								<option value="concrete">Concrete (+$55)</option>
+								<option value="brick">Brick (+$40.00)</option>
+								<option value="concrete">Concrete (+$55.00)</option>
 							</select>
 						</div>
 
 						<div class="field">
 							<label for="conceal">Cable Concealment</label>
 							<select id="conceal">
-								<option value="false">No</option>
-								<option value="true">Yes (+$45)</option>
+								<option value="none">No</option>
+								<option value="channel">Cable Cover Channel (+$19.99)</option>
+								<option value="inwall">In-Wall Concealment (+$49.99)</option>
 							</select>
 						</div>
 
@@ -580,7 +581,15 @@
 							<label for="soundbar">Soundbar Mounting</label>
 							<select id="soundbar">
 								<option value="false">No</option>
-								<option value="true">Yes (+$35)</option>
+								<option value="true">Yes (+$35.00)</option>
+							</select>
+						</div>
+
+						<div class="field full">
+							<label for="discount">Discount</label>
+							<select id="discount">
+								<option value="0">No Discount</option>
+								<option value="10">Limited-Time Discount (-$10.00)</option>
 							</select>
 						</div>
 					</div>
@@ -684,20 +693,32 @@
 			select.innerHTML += `<option value="${s}">${s}" TV</option>`;
 		});
 
+		function formatMoney(value) {
+			return "$" + Number(value).toFixed(2);
+		}
+
 		function calculate() {
 			let size = document.getElementById("tvsize").value;
 			let wall = document.getElementById("wall").value;
-			let conceal = document.getElementById("conceal").value === "true";
+			let conceal = document.getElementById("conceal").value;
 			let soundbar = document.getElementById("soundbar").value === "true";
+			let discount = parseFloat(document.getElementById("discount").value);
 
-			let total = prices[size];
+			let total = Number(prices[size]);
 
 			if (wall === "brick") total += 40;
 			if (wall === "concrete") total += 55;
-			if (conceal) total += 45;
+
+			if (conceal === "channel") total += 19.99;
+			if (conceal === "inwall") total += 49.99;
+
 			if (soundbar) total += 35;
 
-			let deposit = Math.round(total * 0.4);
+			total -= discount;
+
+			if (total < 0) total = 0;
+
+			let deposit = total * 0.4;
 			let remaining = total - deposit;
 
 			const wallLabels = {
@@ -706,12 +727,22 @@
 				concrete: "Concrete"
 			};
 
-			document.getElementById("breakdown").innerText =
-				`${size}" TV • ${wallLabels[wall]} • Cable Concealment: ${conceal ? "Yes" : "No"} • Soundbar: ${soundbar ? "Yes" : "No"}`;
+			const concealLabels = {
+				none: "No",
+				channel: "Cable Cover Channel",
+				inwall: "In-Wall Concealment"
+			};
 
-			document.getElementById("total").innerText = "$" + total;
-			document.getElementById("deposit").innerText = "$" + deposit;
-			document.getElementById("remaining").innerText = "$" + remaining;
+			const discountLabel = discount > 0
+				? ` • Discount: ${formatMoney(discount)} Off`
+				: "";
+
+			document.getElementById("breakdown").innerText =
+				`${size}" TV • ${wallLabels[wall]} • Cable Concealment: ${concealLabels[conceal]} • Soundbar: ${soundbar ? "Yes" : "No"}${discountLabel}`;
+
+			document.getElementById("total").innerText = formatMoney(total);
+			document.getElementById("deposit").innerText = formatMoney(deposit);
+			document.getElementById("remaining").innerText = formatMoney(remaining);
 
 			document.getElementById("result").style.display = "block";
 		}
