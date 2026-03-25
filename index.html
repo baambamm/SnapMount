@@ -4,7 +4,7 @@
 	<title>SnapMount | TV Mount Services Phoenix</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta name="description" content="Professional TV mounting services in Phoenix, Arizona. Clean installs, secure setup, modern booking." />
+	<meta name="description" content="Professional TV mounting services in Phoenix, Arizona. Clean installs, secure installs, modern booking." />
 
 	<style>
 		:root {
@@ -18,6 +18,10 @@
 			--blue: #2563eb;
 			--blue-dark: #1d4ed8;
 			--blue-soft: rgba(37,99,235,0.18);
+			--green: #10b981;
+			--green-soft: rgba(16,185,129,0.14);
+			--red: #ef4444;
+			--red-soft: rgba(239,68,68,0.14);
 			--shadow: 0 20px 50px rgba(0,0,0,0.35);
 			--radius: 18px;
 			--radius-sm: 12px;
@@ -198,6 +202,12 @@
 		.button.secondary:hover,
 		button.secondary:hover {
 			background: rgba(255,255,255,0.1);
+		}
+
+		button[disabled] {
+			opacity: 0.65;
+			cursor: not-allowed;
+			transform: none !important;
 		}
 
 		.quick-stats {
@@ -420,6 +430,29 @@
 			margin-top: 0.8rem;
 		}
 
+		.checkout-status {
+			display: none;
+			margin-top: 1rem;
+			padding: 0.9rem 1rem;
+			border-radius: 12px;
+			font-size: 0.95rem;
+			line-height: 1.5;
+		}
+
+		.checkout-status.success {
+			display: block;
+			background: var(--green-soft);
+			border: 1px solid rgba(16,185,129,0.35);
+			color: #d1fae5;
+		}
+
+		.checkout-status.error {
+			display: block;
+			background: var(--red-soft);
+			border: 1px solid rgba(239,68,68,0.35);
+			color: #fee2e2;
+		}
+
 		.contact-lines p {
 			margin: 0 0 1rem 0;
 			color: var(--muted);
@@ -492,7 +525,7 @@
 				<h1>Clean installs.<br>Sharp finish.</h1>
 				<p>
 					Professional TV mounting with a smoother, more premium booking experience.
-					Get an exact estimate, choose how you want to pay, and move forward without the usual headache.
+					Get an exact estimate, choose what you need, and check out without the usual headache.
 				</p>
 
 				<div class="hero-actions">
@@ -618,13 +651,15 @@
 					</div>
 
 					<div class="actions">
-						<button type="button" class="primary" onclick="checkout('deposit')">Book with Deposit</button>
-						<button type="button" class="secondary" onclick="checkout('full')">Pay in Full</button>
-						<button type="button" class="secondary" onclick="checkout('in_person')">Pay in Person</button>
+						<button id="depositBtn" type="button" class="primary" onclick="checkout('deposit')">Book with Deposit</button>
+						<button id="fullBtn" type="button" class="secondary" onclick="checkout('full')">Pay in Full</button>
+						<button id="personBtn" type="button" class="secondary" onclick="checkout('in_person')">Pay in Person</button>
 					</div>
 
+					<div id="checkoutStatus" class="checkout-status"></div>
+
 					<p class="quote-note">
-						Secure checkout can be connected with Stripe for Apple Pay, cards, and other supported payment methods.
+						Secure checkout is ready to connect to your Stripe backend through Vercel.
 					</p>
 				</div>
 			</div>
@@ -688,81 +723,166 @@
 			85: 189
 		};
 
+		const wallLabels = {
+			drywall: "Drywall / Stud",
+			brick: "Brick",
+			concrete: "Concrete"
+		};
+
+		const concealLabels = {
+			none: "No",
+			channel: "Cable Cover Channel",
+			inwall: "In-Wall Concealment"
+		};
+
 		const select = document.getElementById("tvsize");
-		sizes.forEach(s => {
-			select.innerHTML += `<option value="${s}">${s}" TV</option>`;
+		const resultEl = document.getElementById("result");
+		const statusEl = document.getElementById("checkoutStatus");
+
+		let currentQuote = null;
+
+		sizes.forEach(size => {
+			select.innerHTML += `<option value="${size}">${size}" TV</option>`;
 		});
 
 		function formatMoney(value) {
 			return "$" + Number(value).toFixed(2);
 		}
 
-		function calculate() {
-			let size = document.getElementById("tvsize").value;
-			let wall = document.getElementById("wall").value;
-			let conceal = document.getElementById("conceal").value;
-			let soundbar = document.getElementById("soundbar").value === "true";
-			let discount = parseFloat(document.getElementById("discount").value);
+		function showStatus(type, message) {
+			statusEl.className = `checkout-status ${type}`;
+			statusEl.textContent = message;
+		}
+
+		function clearStatus() {
+			statusEl.className = "checkout-status";
+			statusEl.textContent = "";
+		}
+
+		function setCheckoutLoading(isLoading, buttonType = null) {
+			const depositBtn = document.getElementById("depositBtn");
+			const fullBtn = document.getElementById("fullBtn");
+			const personBtn = document.getElementById("personBtn");
+
+			depositBtn.disabled = isLoading;
+			fullBtn.disabled = isLoading;
+			personBtn.disabled = isLoading;
+
+			depositBtn.textContent = buttonType === "deposit" && isLoading ? "Redirecting..." : "Book with Deposit";
+			fullBtn.textContent = buttonType === "full" && isLoading ? "Redirecting..." : "Pay in Full";
+			personBtn.textContent = buttonType === "in_person" && isLoading ? "Please wait..." : "Pay in Person";
+		}
+
+		function buildQuoteData() {
+			const size = document.getElementById("tvsize").value;
+			const wall = document.getElementById("wall").value;
+			const conceal = document.getElementById("conceal").value;
+			const soundbar = document.getElementById("soundbar").value === "true";
+			const discount = parseFloat(document.getElementById("discount").value);
 
 			let total = Number(prices[size]);
 
 			if (wall === "brick") total += 40;
 			if (wall === "concrete") total += 55;
-
 			if (conceal === "channel") total += 19.99;
 			if (conceal === "inwall") total += 49.99;
-
 			if (soundbar) total += 35;
 
 			total -= discount;
 
 			if (total < 0) total = 0;
 
-			let deposit = total * 0.4;
-			let remaining = total - deposit;
+			const deposit = total * 0.4;
+			const remaining = total - deposit;
 
-			const wallLabels = {
-				drywall: "Drywall / Stud",
-				brick: "Brick",
-				concrete: "Concrete"
+			return {
+				tvSize: Number(size),
+				basePrice: Number(prices[size]),
+				wallType: wall,
+				wallLabel: wallLabels[wall],
+				cableConcealment: conceal,
+				concealLabel: concealLabels[conceal],
+				soundbar,
+				discount,
+				total: Number(total.toFixed(2)),
+				deposit: Number(deposit.toFixed(2)),
+				remaining: Number(remaining.toFixed(2))
 			};
+		}
 
-			const concealLabels = {
-				none: "No",
-				channel: "Cable Cover Channel",
-				inwall: "In-Wall Concealment"
-			};
+		function calculate() {
+			clearStatus();
 
-			const discountLabel = discount > 0
-				? ` • Discount: ${formatMoney(discount)} Off`
+			currentQuote = buildQuoteData();
+
+			const discountLabel = currentQuote.discount > 0
+				? ` • Discount: ${formatMoney(currentQuote.discount)} Off`
 				: "";
 
 			document.getElementById("breakdown").innerText =
-				`${size}" TV • ${wallLabels[wall]} • Cable Concealment: ${concealLabels[conceal]} • Soundbar: ${soundbar ? "Yes" : "No"}${discountLabel}`;
+				`${currentQuote.tvSize}" TV • ${currentQuote.wallLabel} • Cable Concealment: ${currentQuote.concealLabel} • Soundbar: ${currentQuote.soundbar ? "Yes" : "No"}${discountLabel}`;
 
-			document.getElementById("total").innerText = formatMoney(total);
-			document.getElementById("deposit").innerText = formatMoney(deposit);
-			document.getElementById("remaining").innerText = formatMoney(remaining);
+			document.getElementById("total").innerText = formatMoney(currentQuote.total);
+			document.getElementById("deposit").innerText = formatMoney(currentQuote.deposit);
+			document.getElementById("remaining").innerText = formatMoney(currentQuote.remaining);
 
-			document.getElementById("result").style.display = "block";
+			resultEl.style.display = "block";
 		}
 
 		function resetQuote() {
-			document.getElementById("result").style.display = "none";
+			currentQuote = null;
+			resultEl.style.display = "none";
 			document.getElementById("breakdown").innerText = "";
 			document.getElementById("total").innerText = "";
 			document.getElementById("deposit").innerText = "";
 			document.getElementById("remaining").innerText = "";
+			clearStatus();
 		}
 
 		async function checkout(type) {
+			clearStatus();
+
+			if (!currentQuote) {
+				calculate();
+			}
+
 			if (type === "in_person") {
-				alert("Perfect. We’ll contact you to schedule the installation.");
-				window.location.href = "#contact";
+				showStatus("success", "Perfect. We’ll contact you to schedule the installation and collect payment in person.");
+				window.location.hash = "contact";
 				return;
 			}
 
-			alert("Stripe backend not connected yet.\nNext step is setting backend.");
+			try {
+				setCheckoutLoading(true, type);
+
+				const response = await fetch("/api/create-checkout-session", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						paymentType: type,
+						quote: currentQuote
+					})
+				});
+
+				const data = await response.json();
+
+				if (!response.ok) {
+					throw new Error(data.error || "Unable to start checkout.");
+				}
+
+				if (!data.url) {
+					throw new Error("Stripe checkout URL was not returned.");
+				}
+
+				window.location.href = data.url;
+			} catch (error) {
+				console.error(error);
+				showStatus("error", error.message || "Something went wrong starting checkout. Please try again.");
+			} finally {
+				setCheckoutLoading(false);
+			}
 		}
 	</script>
 
