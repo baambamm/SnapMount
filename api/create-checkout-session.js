@@ -1,4 +1,4 @@
-const Stripe = require("stripe");
+import Stripe from "stripe";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -28,10 +28,6 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Invalid payment type" });
     }
 
-    if (!amount || amount < 50) {
-      return res.status(400).json({ error: "Invalid amount" });
-    }
-
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
@@ -54,7 +50,7 @@ export default async function handler(req, res) {
     return res.status(200).json({ url: session.url });
 
   } catch (error) {
-    console.error("ERROR:", error);
+    console.error("🔥 STRIPE ERROR:", error);
     return res.status(500).json({
       error: error.message || "Server error"
     });
