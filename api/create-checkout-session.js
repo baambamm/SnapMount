@@ -1,19 +1,35 @@
-import Stripe from "stripe";
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const Stripe = require("stripe");
 
 export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
+
   try {
-    const { paymentType, quote } = req.body;
+    if (!process.env.STRIPE_SECRET_KEY) {
+      return res.status(500).json({ error: "Missing Stripe secret key" });
+    }
+
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+    const { paymentType, quote } = req.body || {};
+
+    if (!quote) {
+      return res.status(400).json({ error: "Missing quote data" });
+    }
 
     let amount;
 
     if (paymentType === "deposit") {
-      amount = Math.round(quote.deposit * 100);
+      amount = Math.round(Number(quote.deposit) * 100);
     } else if (paymentType === "full") {
-      amount = Math.round(quote.total * 100);
+      amount = Math.round(Number(quote.total) * 100);
     } else {
       return res.status(400).json({ error: "Invalid payment type" });
+    }
+
+    if (!amount || amount < 50) {
+      return res.status(400).json({ error: "Invalid amount" });
     }
 
     const session = await stripe.checkout.sessions.create({
@@ -24,20 +40,23 @@ export default async function handler(req, res) {
           price_data: {
             currency: "usd",
             product_data: {
-              name: `SnapMount Service (${paymentType})`,
+              name: "SnapMount Service"
             },
-            unit_amount: amount,
+            unit_amount: amount
           },
-          quantity: 1,
-        },
+          quantity: 1
+        }
       ],
-      success_url: "https://snapmountarizona.com?success=true",
-      cancel_url: "https://snapmountarizona.com?canceled=true",
+      success_url: "https://snapmountaz.com?success=true",
+      cancel_url: "https://snapmountaz.com?canceled=true"
     });
 
-    res.status(200).json({ url: session.url });
+    return res.status(200).json({ url: session.url });
+
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Something went wrong" });
+    console.error("ERROR:", error);
+    return res.status(500).json({
+      error: error.message || "Server error"
+    });
   }
 }
